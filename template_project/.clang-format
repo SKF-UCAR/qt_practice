@@ -1,0 +1,31 @@
+﻿BasedOnStyle: LLVM
+AccessModifierOffset: '-4'
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: 'true'
+AlignEscapedNewlines: Left
+AllowShortBlocksOnASingleLine: 'true'
+AllowShortLoopsOnASingleLine: 'true'
+BreakBeforeBraces: Allman
+ColumnLimit: '0'
+
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+AllowAllConstructorInitializersOnNextLine: true
+ConstructorInitializerIndentWidth: '4'
+
+SpaceBeforeCtorInitializerColon: true
+BreakBeforeInheritanceComma: false
+BreakInheritanceList: AfterColon
+BreakConstructorInitializersBeforeComma: false
+BreakConstructorInitializers: AfterColon
+
+IncludeBlocks: Preserve
+IndentCaseLabels: 'true'
+IndentWidth: '4'
+KeepEmptyLinesAtTheStartOfBlocks: 'false'
+Language: Cpp
+MaxEmptyLinesToKeep: '1'
+NamespaceIndentation: Inner
+PointerAlignment: Left
+Standard: Cpp11
+TabWidth: '4'
+UseTab: Never

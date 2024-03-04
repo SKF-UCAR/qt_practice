@@ -1,0 +1,18 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "make all",
+			"command": "make",
+			"args": [
+				"all"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/qt_remote/build/"
+			},
+			"group": "build",
+			"detail": "compiler: /usr/bin/g++"
+		}
+	]
+}
