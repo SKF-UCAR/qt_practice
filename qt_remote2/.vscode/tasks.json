@@ -9,7 +9,7 @@
 				"all"
 			],
 			"options": {
-				"cwd": "${workspaceFolder}/qt_remote/build/"
+				"cwd": "${workspaceFolder}/build/"
 			},
 			"group": "build",
 			"detail": "compiler: /usr/bin/g++"

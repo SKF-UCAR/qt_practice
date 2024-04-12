@@ -8,10 +8,10 @@
             "name": "(gdb) QtRemoteServer",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/qt_remote/out/bin/QtRemoteServer",
+            "program": "${workspaceFolder}/out/bin/QtRemoteServer",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/qt_remote/out/bin/",
+            "cwd": "${workspaceFolder}/out/bin/",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
@@ -32,14 +32,21 @@
             "name": "(gdb) QtRemoteClient",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/qt_remote/out/bin/QtRemoteClient",
+            "program": "${workspaceFolder}/out/bin/QtRemoteClient",
             "args": [
-                "-p"
-                //,"local:replica"
-                ,"local:registry"
+                "-p",
+                "tcp://127.0.0.1:54430"
+                //,"local:registry"
+                ,
+                "-o",
+                "QtRemoteClient",
+                "-debug",
+                "QtRemoteClientEXE",
+                "-debug",
+                "QtRemoteClient"
             ],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/qt_remote/out/bin/",
+            "cwd": "${workspaceFolder}/out/bin/",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
@@ -56,6 +63,5 @@
                 }
             ]
         }
-
     ]
 }

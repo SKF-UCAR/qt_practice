@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "qtimer": "cpp",
+        "semaphore": "cpp",
+        "stop_token": "cpp"
+    },
+    "cmake.configureOnOpen": true,
+    "cmake.sourceDirectory": "/h/eol/slavafedor/projects/qt_remote2",
+    "C_Cpp.default.compilerPath": "/usr/bin/g++"
+}
