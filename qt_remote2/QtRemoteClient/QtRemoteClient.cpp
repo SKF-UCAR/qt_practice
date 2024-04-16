@@ -7,23 +7,22 @@ LOGGING("QtRemoteClient")
 namespace APAR
 {
 
-QtRemoteClient::QtRemoteClient(QSharedPointer<QRemoteObjectDynamicReplica> replica) :
+QtRemoteServerReplica::QtRemoteServerReplica(QSharedPointer<QRemoteObjectDynamicReplica> ptr) :
     QObject(),
-    // ServerInterface(),
-    _replica(replica)
+    _replica(ptr)
 {
-    DLOG << "QtRemoteClient::QtRemoteClient()";
+    ILOG << "QtRemoteServerReplica::QtRemoteServerReplica()";
     // connect signal for replica valid changed with signal slot initialization
     QObject::connect(
         _replica.data(),
         &QRemoteObjectDynamicReplica::initialized,
         this,
-        &APAR::QtRemoteClient::initConnection_slot);
+        &APAR::QtRemoteServerReplica::initConnection_slot);
 }
 
-void QtRemoteClient::initConnection_slot()
+void QtRemoteServerReplica::initConnection_slot()
 {
-    DLOG << "QtRemoteClient::initConnection_slot()";
+    ILOG << "QtRemoteClient::initConnection_slot()";
     // Connect source replica signal currStateChanged() with client's
     // recSwitchState() slot to receive source's current state:
     QObject::connect(
@@ -37,11 +36,11 @@ void QtRemoteClient::initConnection_slot()
     // QObject::connect(this, SIGNAL(echoSwitchState(bool)), reptr.data(), SLOT(server_slot(bool)));
 }
 
-void QtRemoteClient::onPayloadChanged(Payload data)
+void QtRemoteServerReplica::onPayloadChanged(Payload data)
 {
     // Use QMetaObject to invoke "onPayloadChanged" on the replica
     // QMetaObject::invokeMethod(_replica.data(), "onPayloadChanged", Q_ARG(Payload, data));
-    DLOG << QString("payload  number=%1 text='%2'")
+    ILOG << QString("payload  number=%1 text='%2'")
                 .arg(data.number, 5)
                 .arg(data.text)
                 .toStdString();

@@ -45,11 +45,14 @@ int main(int argc, char** argv)
     const QUrl regUrl = QUrl(QStringLiteral("tcp://127.0.0.1:54430"));
     QRemoteObjectRegistryHost regNode(regUrl, &app);
 
-    regNode.setRegistryUrl(regUrl);
+    // regNode.setRegistryUrl(regUrl);
+    //  Create node that will host source and connect to registry:
+    QRemoteObjectHost srcNode(QUrl(QStringLiteral("tcp://127.0.0.1:54431")),
+                              QUrl(QStringLiteral("tcp://127.0.0.1:54430")));
 
     APAR::QtRemoteServer srv(&app);
 
-    regNode.enableRemoting(&srv, "QtRemoteServer");
+    srcNode.enableRemoting(&srv, "QtRemoteServer");
 
     return app.exec();
 }

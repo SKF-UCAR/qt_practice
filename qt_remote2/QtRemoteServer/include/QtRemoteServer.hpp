@@ -16,7 +16,7 @@ class QtRemoteServer : public ServerInterface
     // Q_PROPERTY(int rndNumber READ getNewNumber)
 public:
     QtRemoteServer(QObject* parent = nullptr);
-    ~QtRemoteServer(){};
+    ~QtRemoteServer() { delete (_payload); };
 
     void onPayloadChanged(Payload payload) override;
 
@@ -27,7 +27,7 @@ private slots:
     void onTimer();
 
 private:
-    Payload _payload;
+    Payload* _payload;
     QTimer* _timer;
 };
 

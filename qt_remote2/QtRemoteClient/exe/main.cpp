@@ -1,6 +1,6 @@
 #include "../../QtRemoteServer/include/Payload.hpp"
-// #include "../../QtRemoteServer/include/QtRemoteServer.hpp"
-#include "../../QtRemoteServer/include/ServerInterface.hpp"
+// #include "../../QtRemoteServer/include/ServerInterface.hpp"
+#include "../../QtRemoteServer/include/QtRemoteServer.hpp"
 #include "../include/QtRemoteClient.hpp"
 #include <QCoreApplication>
 #include <QMetaObject>
@@ -10,6 +10,7 @@
 #include <iostream>
 #include <logx/Logging.h>
 #include <memory>
+#include <qmetatype.h>
 #include <qremoteobjectdynamicreplica.h>
 
 LOGGING("QtRemoteClientEXE")
@@ -63,25 +64,14 @@ int main(int argc, char** argv)
 
     ILOG << "repNode (" << connStr.toStdString() << ")";
 
-    QString roName                                  = parser.value(objectNameOption);
-    QSharedPointer<QRemoteObjectDynamicReplica> ptr = QSharedPointer<QRemoteObjectDynamicReplica>(repNode.acquireDynamic(roName));
+    QString roName = parser.value(objectNameOption);
 
-    // APAR::QtRemoteClient* ptr = repNode.acquire<APAR::QtRemoteClient>(roName);
-    //  APAR::QtRemoteClient proxy(ptr);
-    // QObject obj;
-    // QObject::connect(
-    //     ptr.data(),
-    //     &APAR::QtRemoteClient::PayloadChanged,
-    //     [&](APAR::Payload data)
-    //     {
-    //         DLOG << QString("payload  number=%1 text='%2'")
-    //                     .arg(data.number, 5)
-    //                     .arg(data.text)
-    //                     .toStdString();
-    //     });
+    //qRegisterMetaType("APAR::Payload");
 
-    APAR::QtRemoteClient* client = new APAR::QtRemoteClient(ptr); // create client switch object and pass replica reference to it
-    // DLOG << proxy.;
+    QSharedPointer<QRemoteObjectDynamicReplica> ptr; // shared pointer to hold replica
+    ptr.reset(repNode.acquireDynamic(roName));       // acquire replica of source from host node
+
+    APAR::QtRemoteServerReplica replica(ptr);
 
     return app.exec();
 }

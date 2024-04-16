@@ -18,7 +18,7 @@ define_project(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME} 
     logx
-    QtRemoteServer
+    # QtRemoteServer
     Qt6::Core 
     Qt6::Network
     Qt6::RemoteObjects

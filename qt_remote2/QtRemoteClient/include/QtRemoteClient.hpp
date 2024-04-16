@@ -11,12 +11,11 @@
 namespace APAR
 {
 
-class QtRemoteClient : public QObject // ServerInterface
+class QtRemoteServerReplica : public QObject
 {
     Q_OBJECT
 public:
-    QtRemoteClient(QSharedPointer<QRemoteObjectDynamicReplica> _replica);
-    virtual ~QtRemoteClient() override = default;
+    QtRemoteServerReplica(QSharedPointer<QRemoteObjectDynamicReplica> ptr);
 
 public slots:
     void onPayloadChanged(Payload data);
@@ -26,7 +25,6 @@ signals:
     void PayloadChanged(Payload data);
 
 private:
-    Payload _data = {};
     QSharedPointer<QRemoteObjectDynamicReplica> _replica;
 };
 
