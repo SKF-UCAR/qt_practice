@@ -33,6 +33,20 @@ struct Payload
     QString text{};
 };
 
+inline QDataStream& operator<<(QDataStream& out, const Payload& item)
+{
+    out << item.number << item.text;
+    // out.writeRawData(reinterpret_cast<const char*>(&item), sizeof(T));
+    return out;
+}
+
+inline QDataStream& operator>>(QDataStream& in, Payload& item)
+{
+    // in.readRawData(reinterpret_cast<char*>(&item), sizeof(T));
+    in >> item.number >> item.text;
+    return in;
+}
+
 } // namespace APAR
 
 #ifdef Q_DECLARE_METATYPE
@@ -49,7 +63,7 @@ struct Payload
         return in;                                                         \
     }
 
-BIN_Q_DATA_STREAM_SERIALIZATION_(APAR::Payload)
+//BIN_Q_DATA_STREAM_SERIALIZATION_(APAR::Payload)
 
 Q_DECLARE_METATYPE(APAR::Payload)
 

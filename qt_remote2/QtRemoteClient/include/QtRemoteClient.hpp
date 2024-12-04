@@ -2,10 +2,11 @@
 #define _QT_REMOTE_CLIENT_HPP
 
 #include "../../QtRemoteServer/include/Payload.hpp"
-#include "../../QtRemoteServer/include/ServerInterface.hpp"
+#include <QDataStream>
 #include <QObject>
 #include <QSharedPointer>
 #include <logx/Logging.h>
+#include <qmetatype.h>
 #include <qremoteobjectdynamicreplica.h>
 
 namespace APAR
@@ -30,4 +31,4 @@ private:
 
 } // namespace APAR
 
-#endif
+#endif // _QT_REMOTE_CLIENT_HPP

@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "qtimer": "cpp"
+    },
+    "cmake.configureOnOpen": true,
+    "cmake.sourceDirectory": "/h/eol/slavafedor/projects/qt_remote"
+}

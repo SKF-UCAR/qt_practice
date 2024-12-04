@@ -2,11 +2,11 @@
 #define _QT_REMOTE_CLIENT_HPP
 
 #include <QObject>
-#include <QSharedPointer>
 #include <QRemoteObjectNode>
+#include <QSharedPointer>
 #include <qremoteobjectdynamicreplica.h>
 
-class QtRemoteClient: public QObject
+class QtRemoteClient : public QObject
 {
     Q_OBJECT
 public:
@@ -18,11 +18,11 @@ Q_SIGNALS:
     void newNumber(int number);
 
 public Q_SLOTS:
-    void newNumberReceived_slot( int );
+    void newNumberReceived_slot(int);
     void initConnection_slot();
 
-private:     
+private:
     int _currentNumber;
-    QSharedPointer<QRemoteObjectDynamicReplica> _replicaPtr;// holds reference to replica
+    QSharedPointer<QRemoteObjectDynamicReplica> _replicaPtr; // holds reference to replica
     bool _replicaIsInitialized = false;
 };

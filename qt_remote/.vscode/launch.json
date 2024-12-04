@@ -8,10 +8,10 @@
             "name": "(gdb) QtRemoteServer",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/out/bin/QtRemoteServer",
+            "program": "${workspaceFolder}/qt_remote/out/bin/QtRemoteServer",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/out/bin/",
+            "cwd": "${workspaceFolder}/qt_remote/out/bin/",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
@@ -32,27 +32,15 @@
             "name": "(gdb) QtRemoteClient",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/out/bin/QtRemoteClient",
+            "program": "${workspaceFolder}/qt_remote/out/bin/QtRemoteClient",
             "args": [
-                "-p",
-                "tcp://127.0.0.1:54431"
-                //,"local:registry"
-                ,
-                "-o",
-                "QtRemoteServer",
-                "-debug",
-                "QtRemoteClientEXE",
-                "-debug",
-                "QtRemoteClient"
+                "-p"
+                //,"local:replica"
+                ,"local:registry"
             ],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/out/bin/",
-            "environment": [
-                {
-                    "name": "QT_FATAL_WARNINGS",
-                    "value": true
-                }
-            ],
+            "cwd": "${workspaceFolder}/qt_remote/out/bin/",
+            "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
@@ -68,5 +56,6 @@
                 }
             ]
         }
+
     ]
 }

@@ -1,1 +1,7 @@
-build/**
+.cache
+.idea
+**/build/**
+**/out/
+bash/
+Implicit_Bugs/
+

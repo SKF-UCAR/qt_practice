@@ -36,7 +36,7 @@ void QtRemoteServerReplica::initConnection_slot()
     // QObject::connect(this, SIGNAL(echoSwitchState(bool)), reptr.data(), SLOT(server_slot(bool)));
 }
 
-void QtRemoteServerReplica::onPayloadChanged(Payload data)
+void QtRemoteServerReplica::onPayloadChanged(APAR::Payload data)
 {
     // Use QMetaObject to invoke "onPayloadChanged" on the replica
     // QMetaObject::invokeMethod(_replica.data(), "onPayloadChanged", Q_ARG(Payload, data));

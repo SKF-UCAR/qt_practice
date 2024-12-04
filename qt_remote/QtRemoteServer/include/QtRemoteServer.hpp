@@ -11,7 +11,7 @@ class QtRemoteServer : public QObject
     Q_OBJECT
     //Q_PROPERTY(int rndNumber READ getNewNumber)
 public:
-    QtRemoteServer(QObject* parent = nullptr);
+    QtRemoteServer(RndGeneratorConfig& config, QObject* parent = nullptr);
     ~QtRemoteServer() {};
 
     Q_INVOKABLE int getNewNumber();

@@ -1,6 +1,3 @@
-#include "../../QtRemoteServer/include/Payload.hpp"
-// #include "../../QtRemoteServer/include/ServerInterface.hpp"
-#include "../../QtRemoteServer/include/QtRemoteServer.hpp"
 #include "../include/QtRemoteClient.hpp"
 #include <QCoreApplication>
 #include <QMetaObject>
@@ -66,7 +63,7 @@ int main(int argc, char** argv)
 
     QString roName = parser.value(objectNameOption);
 
-    //qRegisterMetaType("APAR::Payload");
+    qRegisterMetaType<APAR::Payload>("APAR::Payload");
 
     QSharedPointer<QRemoteObjectDynamicReplica> ptr; // shared pointer to hold replica
     ptr.reset(repNode.acquireDynamic(roName));       // acquire replica of source from host node

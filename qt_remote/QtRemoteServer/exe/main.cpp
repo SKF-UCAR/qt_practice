@@ -44,12 +44,12 @@ int main(int argc, char** argv)
         ELOG << "Error: -p or --port-name is required.";
         parser.showHelp(1);
     }
-
-    QtRemoteServer remoteServer(&app);
-    app.thread()->sleep(0.5);
-    QtRemoteServer remoteServer2(&app);
-    app.thread()->sleep(0.25);
-    QtRemoteServer remoteServer3(&app);
+    RndGeneratorConfig config("Rnd1", 4500);
+    QtRemoteServer remoteServer(config, &app);
+    RndGeneratorConfig config2("Rnd2", 2000);
+    QtRemoteServer remoteServer2(config2, &app);
+    RndGeneratorConfig config3("Rnd3", 3000);
+    QtRemoteServer remoteServer3(config3, &app);
 
     auto connStr = parser.value(portNameOption); // "local:replica" "local:registry";
 
@@ -57,14 +57,14 @@ int main(int argc, char** argv)
     const QUrl regUrl = QUrl(QStringLiteral("tcp://127.0.0.1:54430"));
     QRemoteObjectRegistryHost regNode(regUrl, &app);
 
-    // Create node that will host source and connect to registry:
-    QRemoteObjectHost srcNode(
-        QUrl(connStr), 
-        regUrl, 
-        QRemoteObjectHostBase::BuiltInSchemasOnly, 
-        &app);
+    // // Create node that will host source and connect to registry:
+    // QRemoteObjectHost srcNode(
+    //     QUrl(connStr), 
+    //     regUrl, 
+    //     QRemoteObjectHostBase::BuiltInSchemasOnly, 
+    //     &app);
 
-        // Create node that will host source and connect to registry:
+    // Create node that will host source and connect to registry:
     QRemoteObjectHost srcLocalNode(
         QUrl("local:replica"), 
         regUrl, 
@@ -72,9 +72,10 @@ int main(int argc, char** argv)
         &app);
 
 
-    if (!srcNode.enableRemoting(&remoteServer, "QtRemoteServer") ||
-        !srcNode.enableRemoting(&remoteServer2, "QtRemoteServer2") ||
-        !srcLocalNode.enableRemoting(&remoteServer3, "QtRemoteServer3"))
+    if (!regNode.enableRemoting(&remoteServer, "QtRemoteServer") 
+        || !regNode.enableRemoting(&remoteServer2, "QtRemoteServer2") 
+        || !srcLocalNode.enableRemoting(&remoteServer3, "QtRemoteServer3")
+        )
     {
         ELOG << "Can't enable remoting QtRemoteServer";
         exit(-1);

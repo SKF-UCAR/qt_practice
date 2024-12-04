@@ -8,10 +8,13 @@ define_project(${PROJECT_NAME}
     SOURCES
         QtRemoteServer.cpp
         RndGenerator.cpp
+        RndGeneratorConfig.cpp
     HEADERS
         include/RndGenerator.hpp
+        #include/RndGeneratorConfig.hpp
     INTERFACE
         QtRemoteServer.hpp
+        RndGeneratorConfig.hpp
     TESTS
         QtRemoteServer_test.cpp
     EXE_SOURCES
